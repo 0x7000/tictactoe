@@ -14,8 +14,6 @@ def main():
     BOARD[1][0], BOARD[1][1], BOARD[1][2] = " ", " ", " "
     BOARD[2][0], BOARD[2][1], BOARD[2][2] = " ", " ", " "
     # tahta ekrana basıldı.
-    myai()
-    # ai çalışıyor.
     tahta()
     # giriş
     while 1:
@@ -79,10 +77,11 @@ def kontrol(x, y):
 
 
 def myai():
-    toplam = 0
+    toplam = 1
     while 1:
         x, y = random.randint(0, 2), random.randint(0, 2)
         if kontrol(x, y):
+            toplam += 1
             BOARD[x][y] = "O"
             break
         else:
