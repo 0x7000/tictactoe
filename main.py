@@ -77,22 +77,141 @@ def kontrol(x, y):
 
 
 def myai():
-    toplam = 1
-    while 1:
+    turn = True
+    #  sağ sol kontrol
+    if BOARD[0][0] == "X" and BOARD[0][1] == "X":
+        if BOARD[0][2] != "O" and BOARD[0][2] != "X":
+            if turn:
+                BOARD[0][2] = "O"
+                turn = False
+    if BOARD[0][2] == "X" and BOARD[0][1] == "X":
+        if BOARD[0][0] != "O" and BOARD[0][0] != "X":
+            if turn:
+                BOARD[0][0] = "O"
+                turn = False
+    if BOARD[1][0] == "X" and BOARD[1][1] == "X":
+        if BOARD[1][2] != "O" and BOARD[1][2] != "X":
+            if turn:
+                BOARD[1][2] = "O"
+                turn = False
+    if BOARD[1][2] == "X" and BOARD[1][1] == "X":
+        if BOARD[1][0] != "O" and BOARD[1][0] != "X":
+            if turn:
+                BOARD[1][0] = "O"
+                turn = False
+    if BOARD[2][0] == "X" and BOARD[2][1] == "X":
+        if BOARD[2][2] != "O" and BOARD[2][2] != "X":
+            if turn:
+                BOARD[2][2] = "O"
+                turn = False
+    if BOARD[2][2] == "X" and BOARD[2][1] == "X":
+        if BOARD[2][0] != "O" and BOARD[2][0] != "X":
+            if turn:
+                BOARD[2][0] = "O"
+                turn = False
+    #  yukarı aşağı kontrol
+    if BOARD[0][0] == "X" and BOARD[1][0] == "X":
+        if BOARD[2][0] != "O" and BOARD[2][0] != "X":
+            if turn:
+                BOARD[2][0] = "O"
+                turn = False
+    if BOARD[2][0] == "X" and BOARD[1][0] == "X":
+        if BOARD[0][0] != "O" and BOARD[0][0] != "X":
+            if turn:
+                BOARD[0][0] = "O"
+                turn = False
+    if BOARD[0][1] == "X" and BOARD[1][1] == "X":
+        if BOARD[2][1] != "O" and BOARD[2][1] != "X":
+            if turn:
+                BOARD[2][1] = "O"
+                turn = False
+    if BOARD[2][1] == "X" and BOARD[1][1] == "X":
+        if BOARD[0][1] != "O" and BOARD[0][1] != "X":
+            if turn:
+                BOARD[0][1] = "O"
+                turn = False
+    if BOARD[0][2] == "X" and BOARD[1][2] == "X":
+        if BOARD[2][2] != "O" and BOARD[2][2] != "X":
+            if turn:
+                BOARD[2][2] = "O"
+                turn = False
+    if BOARD[2][2] == "X" and BOARD[1][2] == "X":
+        if BOARD[0][2] != "O" and BOARD[0][2] != "X":
+            if turn:
+                BOARD[0][2] = "O"
+                turn = False
+    #  çarpraz kontrol
+    if BOARD[0][0] == "X" and BOARD[1][1] == "X":
+        if BOARD[2][2] != "O" and BOARD[2][2] != "X":
+            if turn:
+                BOARD[2][2] = "O"
+                turn = False
+    if BOARD[2][2] == "X" and BOARD[1][1] == "X":
+        if BOARD[0][0] != "O" and BOARD[0][0] != "X":
+            if turn:
+                BOARD[0][0] = "O"
+                turn = False
+    if BOARD[2][0] == "X" and BOARD[1][1] == "X":
+        if BOARD[0][2] != "O" and BOARD[0][2] != "X":
+            if turn:
+                BOARD[0][2] = "O"
+                turn = False
+    if BOARD[0][2] == "X" and BOARD[1][1] == "X":
+        if BOARD[2][0] != "O" and BOARD[2][0] != "X":
+            if turn:
+                BOARD[2][0] = "O"
+                turn = False
+    #  ortası boş kontrol
+    if BOARD[0][0] == "X" and BOARD[0][2] == "X":
+        if BOARD[0][1] != "O" and BOARD[0][1] != "X":
+            if turn:
+                BOARD[0][1] = "O"
+                turn = False
+    if BOARD[1][0] == "X" and BOARD[1][2] == "X":
+        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+            if turn:
+                BOARD[1][1] = "O"
+                turn = False
+    if BOARD[2][0] == "X" and BOARD[2][2] == "X":
+        if BOARD[2][1] != "O" and BOARD[2][1] != "X":
+            if turn:
+                BOARD[2][1] = "O"
+                turn = False
+    if BOARD[0][0] == "X" and BOARD[2][0] == "X":
+        if BOARD[1][0] != "O" and BOARD[1][0] != "X":
+            if turn:
+                BOARD[1][0] = "O"
+                turn = False
+    if BOARD[0][1] == "X" and BOARD[2][1] == "X":
+        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+            if turn:
+                BOARD[1][1] = "O"
+                turn = False
+    if BOARD[0][2] == "X" and BOARD[2][2] == "X":
+        if BOARD[1][2] != "O" and BOARD[1][2] != "X":
+            if turn:
+                BOARD[1][2] = "O"
+                turn = False
+    # ortası boş çarpaz kontrol
+    if BOARD[0][0] == "X" and BOARD[2][2] == "X":
+        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+            if turn:
+                BOARD[1][1] = "O"
+                turn = False
+    if BOARD[0][2] == "X" and BOARD[2][0] == "X":
+        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+            if turn:
+                BOARD[1][1] = "O"
+                turn = False
+    if turn:
         x, y = random.randint(0, 2), random.randint(0, 2)
         if kontrol(x, y):
-            toplam += 1
             BOARD[x][y] = "O"
-            break
-        else:
-            toplam += 1
-            if toplam == 9:
-                break
 
 
-BOARD = [[" ", " ", " "],
-         [" ", " ", " "],
-         [" ", " ", " "]]
+BOARD = [["0", "1", "2"],
+         ["0", "1", "2"],
+         ["0", "1", "2"]]
 
 HUMM = "X"
 COMP = "O"
