@@ -78,7 +78,9 @@ def kontrol(x, y):
 
 def myai():
     deger = oyun_kontrol()
-    if isinstance(deger, list):
+    if BOARD[1][1] == " ":
+        BOARD[1][1] = COMP
+    elif isinstance(deger, list):
         x1, y1 = deger[0], deger[1]
         BOARD[x1][y1] = COMP
     else:
