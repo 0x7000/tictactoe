@@ -76,13 +76,35 @@ def kontrol(x, y):
         return True
 
 
+def kazanc():
+    pass
+
+
 def myai():
-    deger = oyun_kontrol()
+    secenek = []
+    x1 = oyun_kontrol_sag_sol()
+    if x1:
+        secenek.append(x1)
+    x2 = oyun_kontrol_yukari_asagi()
+    if x2:
+        secenek.append(x2)
+    x3 = capraz_kontrol()
+    if x3:
+        secenek.append(x3)
+    x4 = ortasi_bos_kontrol()
+    if x4:
+        secenek.append(x4)
+    x5 = ortasi_bos_capraz_kontrol()
+    if x5:
+        secenek.append(x5)
+    print("Olası hamle sayısı:", len(secenek), "Hamle:", secenek)
     if BOARD[1][1] == " ":
         BOARD[1][1] = COMP
-    elif isinstance(deger, list):
-        x1, y1 = deger[0], deger[1]
-        BOARD[x1][y1] = COMP
+    elif len(secenek) > 0:
+        if isinstance(secenek[0], list):
+            print(secenek[0])
+            x1, y1 = secenek[0][0], secenek[0][1]
+            BOARD[x1][y1] = COMP
     else:
         turn = True
         for x in range(3):
@@ -95,89 +117,107 @@ def myai():
                 break
 
 
-def oyun_kontrol():
-    #  sağ sol kontrol
-    if BOARD[0][0] == "X" and BOARD[0][1] == "X":
-        if BOARD[0][2] != "O" and BOARD[0][2] != "X":
+def oyun_kontrol_sag_sol():
+    if BOARD[0][0] == HUMM and BOARD[0][1] == HUMM:
+        if BOARD[0][2] != COMP and BOARD[0][2] != HUMM:
             return [0, 2]
-    if BOARD[0][2] == "X" and BOARD[0][1] == "X":
-        if BOARD[0][0] != "O" and BOARD[0][0] != "X":
+    elif BOARD[0][2] == HUMM and BOARD[0][1] == HUMM:
+        if BOARD[0][0] != COMP and BOARD[0][0] != HUMM:
             return [0, 0]
-    if BOARD[1][0] == "X" and BOARD[1][1] == "X":
-        if BOARD[1][2] != "O" and BOARD[1][2] != "X":
+    elif BOARD[1][0] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[1][2] != COMP and BOARD[1][2] != HUMM:
             return [1, 2]
-    if BOARD[1][2] == "X" and BOARD[1][1] == "X":
-        if BOARD[1][0] != "O" and BOARD[1][0] != "X":
+    elif BOARD[1][2] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[1][0] != COMP and BOARD[1][0] != HUMM:
             return [1, 0]
-    if BOARD[2][0] == "X" and BOARD[2][1] == "X":
-        if BOARD[2][2] != "O" and BOARD[2][2] != "X":
+    elif BOARD[2][0] == HUMM and BOARD[2][1] == HUMM:
+        if BOARD[2][2] != COMP and BOARD[2][2] != HUMM:
             return [2, 2]
-    if BOARD[2][2] == "X" and BOARD[2][1] == "X":
-        if BOARD[2][0] != "O" and BOARD[2][0] != "X":
+    elif BOARD[2][2] == HUMM and BOARD[2][1] == HUMM:
+        if BOARD[2][0] != COMP and BOARD[2][0] != HUMM:
             return [2, 0]
-    #  yukarı aşağı kontrol
-    if BOARD[0][0] == "X" and BOARD[1][0] == "X":
-        if BOARD[2][0] != "O" and BOARD[2][0] != "X":
+    else:
+        return False
+
+
+def oyun_kontrol_yukari_asagi():
+    if BOARD[0][0] == HUMM and BOARD[1][0] == HUMM:
+        if BOARD[2][0] != COMP and BOARD[2][0] != HUMM:
             return [2, 0]
-    if BOARD[2][0] == "X" and BOARD[1][0] == "X":
-        if BOARD[0][0] != "O" and BOARD[0][0] != "X":
+    elif BOARD[2][0] == HUMM and BOARD[1][0] == HUMM:
+        if BOARD[0][0] != COMP and BOARD[0][0] != HUMM:
             return [0, 0]
-    if BOARD[0][1] == "X" and BOARD[1][1] == "X":
-        if BOARD[2][1] != "O" and BOARD[2][1] != "X":
+    elif BOARD[0][1] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[2][1] != COMP and BOARD[2][1] != HUMM:
             return [2, 1]
-    if BOARD[2][1] == "X" and BOARD[1][1] == "X":
-        if BOARD[0][1] != "O" and BOARD[0][1] != "X":
+    elif BOARD[2][1] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[0][1] != COMP and BOARD[0][1] != HUMM:
             return [0, 1]
-    if BOARD[0][2] == "X" and BOARD[1][2] == "X":
-        if BOARD[2][2] != "O" and BOARD[2][2] != "X":
+    elif BOARD[0][2] == HUMM and BOARD[1][2] == HUMM:
+        if BOARD[2][2] != COMP and BOARD[2][2] != HUMM:
             return [2, 2]
-    if BOARD[2][2] == "X" and BOARD[1][2] == "X":
-        if BOARD[0][2] != "O" and BOARD[0][2] != "X":
+    elif BOARD[2][2] == HUMM and BOARD[1][2] == HUMM:
+        if BOARD[0][2] != COMP and BOARD[0][2] != HUMM:
             return [0, 2]
-    #  çarpraz kontrol
-    if BOARD[0][0] == "X" and BOARD[1][1] == "X":
-        if BOARD[2][2] != "O" and BOARD[2][2] != "X":
+    else:
+        return False
+
+
+def capraz_kontrol():
+    if BOARD[0][0] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[2][2] != COMP and BOARD[2][2] != HUMM:
             return [2, 2]
-    if BOARD[2][2] == "X" and BOARD[1][1] == "X":
-        if BOARD[0][0] != "O" and BOARD[0][0] != "X":
+    elif BOARD[2][2] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[0][0] != COMP and BOARD[0][0] != HUMM:
             return [0, 0]
-    if BOARD[2][0] == "X" and BOARD[1][1] == "X":
-        if BOARD[0][2] != "O" and BOARD[0][2] != "X":
+    elif BOARD[2][0] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[0][2] != COMP and BOARD[0][2] != HUMM:
             return [0, 2]
-    if BOARD[0][2] == "X" and BOARD[1][1] == "X":
-        if BOARD[2][0] != "O" and BOARD[2][0] != "X":
+    elif BOARD[0][2] == HUMM and BOARD[1][1] == HUMM:
+        if BOARD[2][0] != COMP and BOARD[2][0] != HUMM:
             return [2, 0]
-    #  ortası boş kontrol
-    if BOARD[0][0] == "X" and BOARD[0][2] == "X":
-        if BOARD[0][1] != "O" and BOARD[0][1] != "X":
+    else:
+        return False
+
+
+def ortasi_bos_kontrol():
+    if BOARD[0][0] == HUMM and BOARD[0][2] == HUMM:
+        if BOARD[0][1] != COMP and BOARD[0][1] != HUMM:
             return [0, 1]
-    if BOARD[1][0] == "X" and BOARD[1][2] == "X":
-        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+    elif BOARD[1][0] == HUMM and BOARD[1][2] == HUMM:
+        if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    if BOARD[2][0] == "X" and BOARD[2][2] == "X":
-        if BOARD[2][1] != "O" and BOARD[2][1] != "X":
+    elif BOARD[2][0] == HUMM and BOARD[2][2] == HUMM:
+        if BOARD[2][1] != COMP and BOARD[2][1] != HUMM:
             return [2, 1]
-    if BOARD[0][0] == "X" and BOARD[2][0] == "X":
-        if BOARD[1][0] != "O" and BOARD[1][0] != "X":
+    elif BOARD[0][0] == HUMM and BOARD[2][0] == HUMM:
+        if BOARD[1][0] != COMP and BOARD[1][0] != HUMM:
             return [1, 0]
-    if BOARD[0][1] == "X" and BOARD[2][1] == "X":
-        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+    elif BOARD[0][1] == HUMM and BOARD[2][1] == HUMM:
+        if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    if BOARD[0][2] == "X" and BOARD[2][2] == "X":
-        if BOARD[1][2] != "O" and BOARD[1][2] != "X":
+    elif BOARD[0][2] == HUMM and BOARD[2][2] == HUMM:
+        if BOARD[1][2] != COMP and BOARD[1][2] != HUMM:
             return [1, 2]
-    # ortası boş çarpaz kontrol
-    if BOARD[0][0] == "X" and BOARD[2][2] == "X":
-        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+    else:
+        return False
+
+
+def ortasi_bos_capraz_kontrol():
+    if BOARD[0][0] == HUMM and BOARD[2][2] == HUMM:
+        if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    if BOARD[0][2] == "X" and BOARD[2][0] == "X":
-        if BOARD[1][1] != "O" and BOARD[1][1] != "X":
+    elif BOARD[0][2] == HUMM and BOARD[2][0] == HUMM:
+        if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
+    else:
+        return False
 
 
 BOARD = [[" ", " ", " "],
          [" ", " ", " "],
          [" ", " ", " "]]
+
 
 HUMM = "X"
 COMP = "O"
