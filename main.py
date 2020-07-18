@@ -73,12 +73,11 @@ def main():
         bitti = bitti_comp()
         bitti2 = bitti_humm()
         if bitti:
-            if bitti2:
-                print("Berabere")
-                break
-            else:
-                print("Bilgisayar Kazandı.")
-                break
+            print("Bilgisayar Kazandı.")
+            break
+        if bitti2:
+            print("kullanıcı Kazandı.")
+            break
 
 
 def tahta():
@@ -138,7 +137,9 @@ def myai():
         secenek.append(x5)
     print("Karşı hamle sayısı:", len(secenek), "Hamle:", secenek)
     hamle = kazanc()
-    if isinstance(hamle, list):
+    if BOARD[1][1] == " ":
+        BOARD[1][1] = COMP
+    elif isinstance(hamle, list):
         k1, l1 = hamle[0], hamle[1]
         BOARD[k1][l1] = COMP
     elif len(secenek) > 0:
