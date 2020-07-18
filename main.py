@@ -138,9 +138,7 @@ def myai():
         secenek.append(x5)
     print("Karşı hamle sayısı:", len(secenek), "Hamle:", secenek)
     hamle = kazanc()
-    if BOARD[1][1] == " ":
-        BOARD[1][1] = COMP
-    elif isinstance(hamle, list):
+    if isinstance(hamle, list):
         k1, l1 = hamle[0], hamle[1]
         BOARD[k1][l1] = COMP
     elif len(secenek) > 0:
