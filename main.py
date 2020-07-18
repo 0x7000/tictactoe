@@ -110,7 +110,7 @@ def kazanc():
     x5 = ortasi_bos_capraz_kontrol_comp()
     if x5:
         secenek.append(x5)
-    if len(secenek) > 0:
+    if len(secenek) == 1:
         print("kazandıran hamle sayısı:", len(secenek), "Hamle:", secenek)
         if isinstance(secenek[0], list):
             print("Kazandıran seçenek", secenek[0])
@@ -144,9 +144,11 @@ def myai():
         k1, l1 = hamle[0], hamle[1]
         BOARD[k1][l1] = COMP
     elif len(secenek) > 0:
-        if isinstance(secenek[0], list):
-            x1, y1 = secenek[0][0], secenek[0][1]
-            BOARD[x1][y1] = COMP
+        for xx in secenek:
+            if isinstance(xx, list):
+                xx1, yy1 = xx[0], xx[1]
+                if kontrol(xx1, yy1):
+                    BOARD[xx1][yy1] = COMP
     else:
         turn = True
         for x in range(3):
