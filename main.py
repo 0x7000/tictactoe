@@ -147,6 +147,7 @@ def myai():
                 xx1, yy1 = xx[0], xx[1]
                 if kontrol(xx1, yy1):
                     BOARD[xx1][yy1] = COMP
+                    break
     else:
         turn = True
         for x in range(3):
