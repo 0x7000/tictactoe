@@ -3,6 +3,7 @@
 
 def main():
     sira = 0
+    beraber = False
     # boş oyun alanı hazırlanıyor.
 
     #   1   2   3
@@ -14,9 +15,9 @@ def main():
     BOARD[2][0], BOARD[2][1], BOARD[2][2] = " ", " ", " "
     # tahta ekrana basıldı.
     # giriş
-    #myai()
     tahta()
-    while 1:
+    while not beraber:
+        say = 9
         giris = input(":")
         if giris == "1":
             if kontrol(0, 0):
@@ -61,7 +62,18 @@ def main():
         if sira == 1:
             myai()
             sira = 0
+        for x in range(3):
+            for y in range(3):
+                if BOARD[x][y] != " ":
+                    say -= 1
+            if say == 0:
+                print("Berabere.")
+                beraber = True
         tahta()
+        bitti = bitti_comp()
+        if bitti:
+            print("Bilgisayar Kazandı.")
+            break
 
 
 def tahta():
@@ -140,6 +152,49 @@ def myai():
                     break
             if not turn:
                 break
+
+
+def bitti_comp():
+    if BOARD[0][0] == COMP:
+        if BOARD[0][1] == COMP:
+            if BOARD[0][2] == COMP:
+                print("ok")
+                return True
+    if BOARD[1][0] == COMP:
+        if BOARD[1][1] == COMP:
+            if BOARD[1][2] == COMP:
+                print("ok")
+                return True
+    if BOARD[2][0] == COMP:
+        if BOARD[2][1] == COMP:
+            if BOARD[2][2] == COMP:
+                print("ok")
+                return True
+    if BOARD[0][0] == COMP:
+        if BOARD[1][0] == COMP:
+            if BOARD[2][0] == COMP:
+                print("ok")
+                return True
+    if BOARD[0][1] == COMP:
+        if BOARD[1][1] == COMP:
+            if BOARD[2][1] == COMP:
+                print("ok")
+                return True
+    if BOARD[0][2] == COMP:
+        if BOARD[1][2] == COMP:
+            if BOARD[2][2] == COMP:
+                print("ok")
+                return True
+    if BOARD[0][0] == COMP:
+        if BOARD[1][1] == COMP:
+            if BOARD[2][2] == COMP:
+                print("ok")
+                return True
+    if BOARD[0][2] == COMP:
+        if BOARD[1][1] == COMP:
+            if BOARD[2][0] == COMP:
+                print("ok")
+                return True
 
 
 def oyun_kontrol_sag_sol():
@@ -251,7 +306,7 @@ def capraz_kontrol():
         return False
 
 
-def capraz_kontrol_comp():
+def capraz_kontrol_comp():  # kazanan seçenek gözükmüyor kontrol edicem.
     if BOARD[0][0] == COMP and BOARD[1][1] == COMP:
         if BOARD[2][2] != HUMM and BOARD[2][2] != COMP:
             return [2, 2]
