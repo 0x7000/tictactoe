@@ -71,9 +71,14 @@ def main():
                 beraber = True
         tahta()
         bitti = bitti_comp()
+        bitti2 = bitti_humm()
         if bitti:
-            print("Bilgisayar Kazandı.")
-            break
+            if bitti2:
+                print("Berabere")
+                break
+            else:
+                print("Bilgisayar Kazandı.")
+                break
 
 
 def tahta():
@@ -197,198 +202,221 @@ def bitti_comp():
                 return True
 
 
+def bitti_humm():
+    if BOARD[0][0] == HUMM:
+        if BOARD[0][1] == HUMM:
+            if BOARD[0][2] == HUMM:
+                print("ok")
+                return True
+    if BOARD[1][0] == HUMM:
+        if BOARD[1][1] == HUMM:
+            if BOARD[1][2] == HUMM:
+                print("ok")
+                return True
+    if BOARD[2][0] == HUMM:
+        if BOARD[2][1] == HUMM:
+            if BOARD[2][2] == HUMM:
+                print("ok")
+                return True
+    if BOARD[0][0] == HUMM:
+        if BOARD[1][0] == HUMM:
+            if BOARD[2][0] == HUMM:
+                print("ok")
+                return True
+    if BOARD[0][1] == HUMM:
+        if BOARD[1][1] == HUMM:
+            if BOARD[2][1] == HUMM:
+                print("ok")
+                return True
+    if BOARD[0][2] == HUMM:
+        if BOARD[1][2] == HUMM:
+            if BOARD[2][2] == HUMM:
+                print("ok")
+                return True
+    if BOARD[0][0] == HUMM:
+        if BOARD[1][1] == HUMM:
+            if BOARD[2][2] == HUMM:
+                print("ok")
+                return True
+    if BOARD[0][2] == HUMM:
+        if BOARD[1][1] == HUMM:
+            if BOARD[2][0] == HUMM:
+                print("ok")
+                return True
+
+
 def oyun_kontrol_sag_sol():
     if BOARD[0][0] == HUMM and BOARD[0][1] == HUMM:
         if BOARD[0][2] != COMP and BOARD[0][2] != HUMM:
             return [0, 2]
-    elif BOARD[0][2] == HUMM and BOARD[0][1] == HUMM:
+    if BOARD[0][2] == HUMM and BOARD[0][1] == HUMM:
         if BOARD[0][0] != COMP and BOARD[0][0] != HUMM:
             return [0, 0]
-    elif BOARD[1][0] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[1][0] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[1][2] != COMP and BOARD[1][2] != HUMM:
             return [1, 2]
-    elif BOARD[1][2] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[1][2] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[1][0] != COMP and BOARD[1][0] != HUMM:
             return [1, 0]
-    elif BOARD[2][0] == HUMM and BOARD[2][1] == HUMM:
+    if BOARD[2][0] == HUMM and BOARD[2][1] == HUMM:
         if BOARD[2][2] != COMP and BOARD[2][2] != HUMM:
             return [2, 2]
-    elif BOARD[2][2] == HUMM and BOARD[2][1] == HUMM:
+    if BOARD[2][2] == HUMM and BOARD[2][1] == HUMM:
         if BOARD[2][0] != COMP and BOARD[2][0] != HUMM:
             return [2, 0]
-    else:
-        return False
 
 
 def oyun_kontrol_sag_sol_comp():
     if BOARD[0][0] == COMP and BOARD[0][1] == COMP:
         if BOARD[0][2] != HUMM and BOARD[0][2] != COMP:
             return [0, 2]
-    elif BOARD[0][2] == COMP and BOARD[0][1] == COMP:
+    if BOARD[0][2] == COMP and BOARD[0][1] == COMP:
         if BOARD[0][0] != HUMM and BOARD[0][0] != COMP:
             return [0, 0]
-    elif BOARD[1][0] == COMP and BOARD[1][1] == COMP:
+    if BOARD[1][0] == COMP and BOARD[1][1] == COMP:
         if BOARD[1][2] != HUMM and BOARD[1][2] != COMP:
             return [1, 2]
-    elif BOARD[1][2] == COMP and BOARD[1][1] == COMP:
+    if BOARD[1][2] == COMP and BOARD[1][1] == COMP:
         if BOARD[1][0] != HUMM and BOARD[1][0] != COMP:
             return [1, 0]
-    elif BOARD[2][0] == COMP and BOARD[2][1] == COMP:
+    if BOARD[2][0] == COMP and BOARD[2][1] == COMP:
         if BOARD[2][2] != HUMM and BOARD[2][2] != COMP:
             return [2, 2]
-    elif BOARD[2][2] == COMP and BOARD[2][1] == COMP:
+    if BOARD[2][2] == COMP and BOARD[2][1] == COMP:
         if BOARD[2][0] != HUMM and BOARD[2][0] != COMP:
             return [2, 0]
-    else:
-        return False
 
 
 def oyun_kontrol_yukari_asagi():
     if BOARD[0][0] == HUMM and BOARD[1][0] == HUMM:
         if BOARD[2][0] != COMP and BOARD[2][0] != HUMM:
             return [2, 0]
-    elif BOARD[2][0] == HUMM and BOARD[1][0] == HUMM:
+    if BOARD[2][0] == HUMM and BOARD[1][0] == HUMM:
         if BOARD[0][0] != COMP and BOARD[0][0] != HUMM:
             return [0, 0]
-    elif BOARD[0][1] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[0][1] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[2][1] != COMP and BOARD[2][1] != HUMM:
             return [2, 1]
-    elif BOARD[2][1] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[2][1] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[0][1] != COMP and BOARD[0][1] != HUMM:
             return [0, 1]
-    elif BOARD[0][2] == HUMM and BOARD[1][2] == HUMM:
+    if BOARD[0][2] == HUMM and BOARD[1][2] == HUMM:
         if BOARD[2][2] != COMP and BOARD[2][2] != HUMM:
             return [2, 2]
-    elif BOARD[2][2] == HUMM and BOARD[1][2] == HUMM:
+    if BOARD[2][2] == HUMM and BOARD[1][2] == HUMM:
         if BOARD[0][2] != COMP and BOARD[0][2] != HUMM:
             return [0, 2]
-    else:
-        return False
 
 
 def oyun_kontrol_yukari_asagi_comp():
     if BOARD[0][0] == COMP and BOARD[1][0] == COMP:
         if BOARD[2][0] != HUMM and BOARD[2][0] != COMP:
             return [2, 0]
-    elif BOARD[2][0] == COMP and BOARD[1][0] == COMP:
+    if BOARD[2][0] == COMP and BOARD[1][0] == COMP:
         if BOARD[0][0] != HUMM and BOARD[0][0] != COMP:
             return [0, 0]
-    elif BOARD[0][1] == COMP and BOARD[1][1] == COMP:
+    if BOARD[0][1] == COMP and BOARD[1][1] == COMP:
         if BOARD[2][1] != HUMM and BOARD[2][1] != COMP:
             return [2, 1]
-    elif BOARD[2][1] == COMP and BOARD[1][1] == COMP:
+    if BOARD[2][1] == COMP and BOARD[1][1] == COMP:
         if BOARD[0][1] != HUMM and BOARD[0][1] != COMP:
             return [0, 1]
-    elif BOARD[0][2] == COMP and BOARD[1][2] == COMP:
+    if BOARD[0][2] == COMP and BOARD[1][2] == COMP:
         if BOARD[2][2] != HUMM and BOARD[2][2] != COMP:
             return [2, 2]
-    elif BOARD[2][2] == COMP and BOARD[1][2] == COMP:
+    if BOARD[2][2] == COMP and BOARD[1][2] == COMP:
         if BOARD[0][2] != HUMM and BOARD[0][2] != COMP:
             return [0, 2]
-    else:
-        return False
 
 
 def capraz_kontrol():
     if BOARD[0][0] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[2][2] != COMP and BOARD[2][2] != HUMM:
             return [2, 2]
-    elif BOARD[2][2] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[2][2] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[0][0] != COMP and BOARD[0][0] != HUMM:
             return [0, 0]
-    elif BOARD[2][0] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[2][0] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[0][2] != COMP and BOARD[0][2] != HUMM:
             return [0, 2]
-    elif BOARD[0][2] == HUMM and BOARD[1][1] == HUMM:
+    if BOARD[0][2] == HUMM and BOARD[1][1] == HUMM:
         if BOARD[2][0] != COMP and BOARD[2][0] != HUMM:
             return [2, 0]
-    else:
-        return False
 
 
 def capraz_kontrol_comp():  # kazanan seçenek gözükmüyor kontrol edicem.
     if BOARD[0][0] == COMP and BOARD[1][1] == COMP:
         if BOARD[2][2] != HUMM and BOARD[2][2] != COMP:
             return [2, 2]
-    elif BOARD[2][2] == COMP and BOARD[1][1] == COMP:
+    if BOARD[2][2] == COMP and BOARD[1][1] == COMP:
         if BOARD[0][0] != HUMM and BOARD[0][0] != COMP:
             return [0, 0]
-    elif BOARD[2][0] == COMP and BOARD[1][1] == COMP:
+    if BOARD[2][0] == COMP and BOARD[1][1] == COMP:
         if BOARD[0][2] != HUMM and BOARD[0][2] != COMP:
             return [0, 2]
-    elif BOARD[0][2] == COMP and BOARD[1][1] == COMP:
+    if BOARD[0][2] == COMP and BOARD[1][1] == COMP:
         if BOARD[2][0] != HUMM and BOARD[2][0] != COMP:
             return [2, 0]
-    else:
-        return False
 
 
 def ortasi_bos_kontrol():
     if BOARD[0][0] == HUMM and BOARD[0][2] == HUMM:
         if BOARD[0][1] != COMP and BOARD[0][1] != HUMM:
             return [0, 1]
-    elif BOARD[1][0] == HUMM and BOARD[1][2] == HUMM:
+    if BOARD[1][0] == HUMM and BOARD[1][2] == HUMM:
         if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    elif BOARD[2][0] == HUMM and BOARD[2][2] == HUMM:
+    if BOARD[2][0] == HUMM and BOARD[2][2] == HUMM:
         if BOARD[2][1] != COMP and BOARD[2][1] != HUMM:
             return [2, 1]
-    elif BOARD[0][0] == HUMM and BOARD[2][0] == HUMM:
+    if BOARD[0][0] == HUMM and BOARD[2][0] == HUMM:
         if BOARD[1][0] != COMP and BOARD[1][0] != HUMM:
             return [1, 0]
-    elif BOARD[0][1] == HUMM and BOARD[2][1] == HUMM:
+    if BOARD[0][1] == HUMM and BOARD[2][1] == HUMM:
         if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    elif BOARD[0][2] == HUMM and BOARD[2][2] == HUMM:
+    if BOARD[0][2] == HUMM and BOARD[2][2] == HUMM:
         if BOARD[1][2] != COMP and BOARD[1][2] != HUMM:
             return [1, 2]
-    else:
-        return False
 
 
 def ortasi_bos_kontrol_comp():
     if BOARD[0][0] == COMP and BOARD[0][2] == COMP:
         if BOARD[0][1] != HUMM and BOARD[0][1] != COMP:
             return [0, 1]
-    elif BOARD[1][0] == COMP and BOARD[1][2] == COMP:
+    if BOARD[1][0] == COMP and BOARD[1][2] == COMP:
         if BOARD[1][1] != HUMM and BOARD[1][1] != COMP:
             return [1, 1]
-    elif BOARD[2][0] == COMP and BOARD[2][2] == COMP:
+    if BOARD[2][0] == COMP and BOARD[2][2] == COMP:
         if BOARD[2][1] != HUMM and BOARD[2][1] != COMP:
             return [2, 1]
-    elif BOARD[0][0] == COMP and BOARD[2][0] == COMP:
+    if BOARD[0][0] == COMP and BOARD[2][0] == COMP:
         if BOARD[1][0] != HUMM and BOARD[1][0] != COMP:
             return [1, 0]
-    elif BOARD[0][1] == COMP and BOARD[2][1] == COMP:
+    if BOARD[0][1] == COMP and BOARD[2][1] == COMP:
         if BOARD[1][1] != HUMM and BOARD[1][1] != COMP:
             return [1, 1]
-    elif BOARD[0][2] == COMP and BOARD[2][2] == COMP:
+    if BOARD[0][2] == COMP and BOARD[2][2] == COMP:
         if BOARD[1][2] != HUMM and BOARD[1][2] != COMP:
             return [1, 2]
-    else:
-        return False
 
 
 def ortasi_bos_capraz_kontrol():
     if BOARD[0][0] == HUMM and BOARD[2][2] == HUMM:
         if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    elif BOARD[0][2] == HUMM and BOARD[2][0] == HUMM:
+    if BOARD[0][2] == HUMM and BOARD[2][0] == HUMM:
         if BOARD[1][1] != COMP and BOARD[1][1] != HUMM:
             return [1, 1]
-    else:
-        return False
 
 
 def ortasi_bos_capraz_kontrol_comp():
     if BOARD[0][0] == COMP and BOARD[2][2] == COMP:
         if BOARD[1][1] != HUMM and BOARD[1][1] != COMP:
             return [1, 1]
-    elif BOARD[0][2] == COMP and BOARD[2][0] == COMP:
+    if BOARD[0][2] == COMP and BOARD[2][0] == COMP:
         if BOARD[1][1] != HUMM and BOARD[1][1] != COMP:
             return [1, 1]
-    else:
-        return False
 
 
 BOARD = [[" ", " ", " "],
